@@ -34,10 +34,11 @@ void addEditor(vector<text_editor>& editors) {//додавання нового 
     getline(cin, n.name);
     cout << "Write vurobnuc of the text editor: ";
     getline(cin, n.vurobnuc);
-    cout << "Write licence used for the text editor(F - free, O - open-resource, P - paid ): ";
-    do {
+    do {     
+        cout << "Write licence used for the text editor(F - free, O - open-resource, P - paid ): ";
         cin >> n.licence;
-    } while (n.licence!='P'||n.licence!='O'||n.licence!='F');
+        if (n.licence != 'P' && n.licence != 'O' && n.licence != 'F') cout << "Invalid input, try again.\n";
+    } while (n.licence !='P'&& n.licence !='O' && n.licence !='F');
     cout << "Write rang of the text editor: ";
     cin >> n.rang;
     cout << "Write price of the text editor: ";
