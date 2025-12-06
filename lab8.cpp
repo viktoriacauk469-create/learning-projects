@@ -35,7 +35,9 @@ void addEditor(vector<text_editor>& editors) {//додавання нового 
     cout << "Write vurobnuc of the text editor: ";
     getline(cin, n.vurobnuc);
     cout << "Write licence used for the text editor(F - free, O - open-resource, P - paid ): ";
-    cin >> n.licence;
+    do {
+        cin >> n.licence;
+    } while (n.licence!='P'||n.licence!='O'||n.licence!='F');
     cout << "Write rang of the text editor: ";
     cin >> n.rang;
     cout << "Write price of the text editor: ";
@@ -191,8 +193,6 @@ int main()
             cout << "There is no such option!\n";
         }
     }
-}//every function is working correctly
-//need: make a way to save elements via ,
-//why there is nothing in the file
+}
 //maybe do something to avoid errors when something is typed wrong 
 
