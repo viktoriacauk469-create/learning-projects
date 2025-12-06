@@ -39,10 +39,16 @@ void addEditor(vector<text_editor>& editors) {//додавання нового 
         cin >> n.licence;
         if (n.licence != 'P' && n.licence != 'O' && n.licence != 'F') cout << "Invalid input, try again.\n";
     } while (n.licence !='P'&& n.licence !='O' && n.licence !='F');
-    cout << "Write rang of the text editor: ";
-    cin >> n.rang;
-    cout << "Write price of the text editor: ";
-    cin >> n.price;
+    do{
+        cout << "Write rang of the text editor(0.0 - 5.0)): ";
+        cin >> n.rang;
+        if (n.rang < 0.0 || n.rang > 5.0) cout << "Invalid input, try again.\n";
+    } while (n.rang < 0.0 || n.rang > 5.0);
+    do{
+        cout << "Write price of the text editor: ";
+        cin >> n.price;
+        if (n.price < 0 ) cout << "Invalid input, try again.\n";
+    } while (n.price < 0);
     editors.push_back(n);
     cout << "Thanks, new element was added succesfully.\n";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -63,12 +69,21 @@ void editElement(vector<text_editor>& editors) {//редагування одн�
     cout << "New vurobnuc: ";
     getline(cin, editors[index].vurobnuc);
     cout << "New licence:";
-    cin >> editors[index].licence;
-    cout << "New rang:";
-    cin >> editors[index].rang;
-    cout << "New price:";
-    cin >> editors[index].price;
-    cout << "update is saved";
+    do {     
+        cout << "Write licence used for the text editor(F - free, O - open-resource, P - paid ): ";
+        cin >> editors[index].licence;
+        if (editors[index].licence != 'P' && editors[index].licence != 'O' && editors[index].licence != 'F') cout << "Invalid input, try again.\n";
+    } while (editors[index].licence !='P'&& editors[index].licence !='O' && editors[index].licence !='F');
+    do{
+        cout << "Write rang of the text editor(0.0 - 5.0)): ";
+        cin >> editors[index].rang;
+        if (editors[index].rang < 0.0 || editors[index].rang > 5.0) cout << "Invalid input, try again.\n";
+    } while (editors[index].rang < 0.0 || editors[index].rang > 5.0);
+    do{
+        cout << "Write price of the text editor: ";
+        cin >> editors[index].price;
+        if (editors[index].price < 0 ) cout << "Invalid input, try again.\n";
+    } while (editors[index].price < 0);
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 void deleteElement(vector<text_editor>& editors) {//видалення елементу
