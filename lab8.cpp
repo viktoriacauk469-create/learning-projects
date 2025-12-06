@@ -210,5 +210,4 @@ int main()
         }
     }
 }
-//maybe do something to avoid errors when something is typed wrong 
 
