@@ -1,0 +1,6 @@
+BasedOnStyle: Google
+IndentWidth: 4
+BraceWrapping:
+  AfterFunction: false
+  AfterControlStatement: false
+SpaceAfterCStyleCast: true
