@@ -1,22 +1,25 @@
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
+#include<iomanip>
 using namespace std;
 class BankAccount{
-   private:
-   int createAcNum(){
+private:
+    string OwnerName;
+    int AccountNumber;
+    double Balance;
+    int createAcNum(){
        int num = rand() % 100000;
        return num;
    }
-    string OwnerName;
-    int AccountNumber= createAcNum();
-    double Balance;
-   public:
+public:
      BankAccount(string ownername, double balance)
-         : OwnerName(ownername), Balance(balance) {}
+         : OwnerName(ownername), Balance(balance) {
+         AccountNumber = createAcNum();
+     }
      void withdraw() {
          double depsum;
-         cout << "How many you want to put into your deposit account?\n";
+         cout << "How much do you want to withdraw?\n";
          do {
              cin >> depsum;
              if (depsum > Balance) {
@@ -34,10 +37,15 @@ class BankAccount{
      }
      void display(){
          cout << "The name of an owner is : " << OwnerName << endl << "Your balance is:" << Balance << endl;
-         printf("Your account number is %6d", AccountNumber);
+         cout << "Your account number is " << setw(5) << setfill('0') << AccountNumber << endl;
      }
 };
-int main(){
+int main() {
     srand(time(0));
-    BankAccount Mine("V.C", 123);
+    BankAccount mine("V.C", 123);
+    mine.display();
+    mine.deposit();
+    mine.withdraw();
+    mine.display();
+    return 0;
 }
