@@ -5,7 +5,6 @@ using namespace std;
 class BankAccount{
    private:
    int createAcNum(){
-       srand(time(0));
        int num = rand() % 100000;
        return num;
    }
@@ -15,7 +14,7 @@ class BankAccount{
    public:
      BankAccount(string ownername, double balance)
          : OwnerName(ownername), Balance(balance) {}
-     void deposit() {
+     void withdraw() {
          double depsum;
          cout << "How many you want to put into your deposit account?\n";
          do {
@@ -27,8 +26,11 @@ class BankAccount{
          } while (depsum > Balance);
          Balance -= depsum;
      }
-     void withdraw(){
-        
+     void deposit() { 
+        double dep;
+        cout << "Write deposite number you want : ";
+        cin >> dep;
+        Balance += dep;
      }
      void display(){
          cout << "The name of an owner is : " << OwnerName << endl << "Your balance is:" << Balance << endl;
@@ -36,6 +38,6 @@ class BankAccount{
      }
 };
 int main(){
-    BankAccount Mine;
-    Mine("V.C", 123);
+    srand(time(0));
+    BankAccount Mine("V.C", 123);
 }
